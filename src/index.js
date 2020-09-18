@@ -1,17 +1,18 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./css/tailwind/tailwind.output.css";
+import { Header } from "./components/Header/Header";
+import { AppContext } from "./PokemonContext/PokemonContext";
+import { Home } from "./components/Home/Home";
+const ROOT = document.getElementById("root");
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+const App = () => {
+  return (
+    <AppContext>
+      <Header />
+      <Home />
+    </AppContext>
+  );
+};
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+ReactDOM.render(<App />, ROOT);

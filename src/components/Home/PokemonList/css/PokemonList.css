@@ -1,0 +1,13 @@
+.pokemon-list {
+  grid-template-columns: 1fr;
+  row-gap: 30px;
+  padding-top: 100px;
+  place-items: center;
+  min-height: calc(100vh - 120px);
+}
+
+@media screen and (min-width: 768px) {
+  .pokemon-list {
+    padding-top: 0;
+  }
+}

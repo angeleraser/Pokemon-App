@@ -1,0 +1,9 @@
+.main {
+  padding-top: 120px;
+}
+@media screen and (min-width: 768px) {
+  .main {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+}

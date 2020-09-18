@@ -1,0 +1,15 @@
+.header {
+  padding: 20px 26px;
+  box-shadow: 0 -2px 8px 2px rgba(0, 0, 0, 0.2);
+  position: fixed;
+  z-index: 100;
+  max-width: 1440px;
+  background-color: #fff;
+}
+
+.header img {
+  display: inline-block;
+  height: 80px;
+  width: 240px;
+}
+

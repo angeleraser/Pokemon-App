@@ -11,6 +11,11 @@
   background-color: #fff;
 }
 
+.list-wrapper .types-list,
+.list-wrapper .loading-types-list {
+  top: 80px;
+}
+
 .list-wrapper .loading-types-list {
   max-height: calc(100vh - 130px);
 }
@@ -51,6 +56,13 @@
   height: 60px;
 }
 
+@media screen and (min-width: 700px) {
+  .list-wrapper .types-list,
+  .list-wrapper .loading-types-list {
+    top: 90px;
+  }
+}
+
 @media screen and (min-width: 768px) {
   .list-wrapper {
     max-width: 200px;
@@ -63,10 +75,12 @@
     overflow-x: hidden;
     max-width: 200px;
     padding: 20px 10px 20px 15px;
+    top: 140px;
   }
 
   .list-wrapper .loading-types-list {
     max-height: calc(100vh - 110px);
+    top: 140px;
   }
 
   .list-wrapper .types-list > button:not(:last-child),

@@ -1,0 +1,55 @@
+.menu-button {
+  width: 30px;
+  height: 25px;
+  position: relative;
+  z-index: 100;
+  align-self: flex-end;
+}
+
+.menu-button span,
+.menu-button:after,
+.menu-button::before {
+  display: inline-block;
+  height: 4px;
+  width: 100%;
+  background-color: var(--primary-blue);
+  position: absolute;
+  transition: all 0.3s;
+  border-radius: 40px;
+}
+
+.menu-button span {
+  transform: translate(0, 7px);
+}
+
+.menu-button:after {
+  transform: translate(0, -4px);
+}
+
+.menu-button::before {
+  transform: translate(0, 18px);
+}
+
+.menu-button:after,
+.menu-button::before {
+  content: "";
+}
+
+.menu-button.active::before,
+.menu-button.active::after {
+  transform: translate(0, 7px);
+}
+.menu-button.active::before,
+.menu-button.active span {
+  transform: translate(0, 7px) rotate(45deg);
+}
+
+.menu-button.active::after {
+  transform: translate(0, 7px) rotate(-45deg);
+}
+
+@media screen and (min-width:700px) {
+  .menu-button {
+    display: none;
+  }
+}

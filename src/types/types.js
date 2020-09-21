@@ -6,4 +6,12 @@ export const types = {
   setFetchError: "[home] setFetchError",
   updatePokemonList: "[home] updatePokemonList",
   updateHomeStatus: "[home] updateHomeStatus",
+  setPokemonDetails: "[details] setPokemonDetails",
+  savePokemonListDetails: "[details] savePokemonList",
+  setArenaPokemon: "[arena] setCurrentPokemon",
+  enableArena: "[arena] enabled",
+  disableArena: "[arena] disabled",
+  throwPokeball: "[arena] throwPokeball",
+  pokeballSuccess: "[arena] pokeballSuccess",
+  savePokemonInPC: "[pc] savePokemon",
 };

@@ -1,0 +1,128 @@
+.menu {
+  bottom: -100%;
+  top: 0;
+  left: 100%;
+  background-color:var(--btn-bg);
+  padding: 26px;
+  height: 100vh;
+  transition: left 0.3s;
+  z-index: 90;
+  padding-top: 80px;
+}
+
+.menu .my-team {
+  display: flex;
+  align-items: center;
+  font-size: 26px;
+  display: flex;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--text-black);
+  flex-shrink: 0;
+  padding: 15px;
+  cursor: pointer;
+  margin-top: 30px;
+}
+
+.menu .my-team svg {
+  margin-left: 12px;
+}
+
+.menu .pokeball {
+  animation: none;
+  width: 25px;
+  margin: 0 0 0 12px;
+  height: 25px;
+  border: 2px solid #000;
+}
+
+.menu .pokeball__button {
+  position: absolute;
+  top: calc(50% - 2px);
+  left: calc(50% - 3px);
+  width: 5px;
+  height: 5px;
+  background: #7f8c8d;
+  border: 1px solid #fff;
+  border-radius: 50%;
+  z-index: 10;
+  box-shadow: 0 0 0 2px black;
+  animation: blink 0.5s alternate 7;
+  animation-iteration-count: infinite;
+}
+
+.menu.active {
+  left: 0;
+}
+
+.search-pokemon-form {
+  max-width: 320px;
+}
+
+.search-pokemon-form input {
+  border: 2px solid var(--primary-blue);
+  outline: none;
+  height: 45px;
+  width: 100%;
+  text-indent: 20px;
+  border-radius: 6px 0 0 6px;
+  color: var(--primary-blue);
+}
+
+.search-pokemon-form button {
+  padding: 0 16px;
+  background-color: var(--primary-blue);
+  border-radius: 0 6px 6px 0;
+}
+
+.search-pokemon-form button svg {
+  stroke: var(--primary-yellow);
+  fill: var(--primary-yellow);
+}
+
+.search-pokemon-form input::placeholder {
+  color: var(--primary-blue);
+}
+
+@media screen and (min-width: 700px) {
+  .menu.menu.active{
+    background-color: #fff;
+  }
+  .menu {
+    position: static;
+    height: auto;
+    flex-direction: row;
+    padding: 0;
+    width: 100%;
+    background-color: #fff;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  .search-pokemon-form {
+    max-width: 380px;
+    margin-left: 60px;
+  }
+
+  .search-pokemon-form input {
+    height: 52px;
+    font-size: 18px;
+  }
+
+  .menu .search-pokemon-form::after {
+    content: "";
+    display: inline-block;
+    border-radius: 50%;
+    height: 10px;
+    width: 10px;
+    align-self: center;
+    background-color: #7ac74c;
+    margin: 0 24px;
+    flex-shrink: 0;
+  }
+
+  .menu .my-team {
+    margin-top: 0;
+    padding: 0;
+  }
+}

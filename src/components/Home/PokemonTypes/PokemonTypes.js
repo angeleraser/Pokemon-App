@@ -68,10 +68,14 @@ export const PokemonTypes = () => {
 
   // Fetch pokemon list again
   useEffect(() => {
-    status.fetchError === homeStatus.failedInFetchPokemonTypes &&
+    if (
+      status.currentAction === homeStatus.fetchPokemonTypesAgain &&
+      !pokemonTypes.length
+    ) {
       fetchPokemonTypes();
+    }
   }, [status]);
-  
+
   const names = useMemo(() => {
     return pokemonTypes.filter(
       ({ pokemonListToFetch }) => pokemonListToFetch.length > 0

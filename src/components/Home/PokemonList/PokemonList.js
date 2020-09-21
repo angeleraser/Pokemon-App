@@ -10,6 +10,7 @@ import { types } from "../../../types/types";
 import { LoadingPokeball } from "../../LoadingPokeball/LoadingPokeball";
 import { usePokemon } from "../../hooks/usePokemon";
 import { homeStatus } from "../../../status/status";
+import { delay } from "../../../functions/delay";
 const PokemonList = () => {
   const {
     state: {
@@ -78,7 +79,7 @@ const PokemonList = () => {
           list: [],
         },
       });
-      // Disable the types button while is updating the pokemon list 
+      // Disable the types button while is updating the pokemon list
       dispatch({
         type: types.updateHomeStatus,
         payload: {
@@ -86,7 +87,7 @@ const PokemonList = () => {
           fetchError: null,
         },
       });
-      setTimeout(() => {
+      delay(() => {
         dispatch({
           type: types.updatePokemonList,
           payload: {
@@ -103,7 +104,7 @@ const PokemonList = () => {
             fetchError: null,
           },
         });
-      }, 500);
+      }, 1000);
     }
   }, [selected, allFetchedPokemon]);
 
@@ -131,6 +132,21 @@ const PokemonList = () => {
           fetchAction={() => {
             if (status.fetchError === homeStatus.failedInFetchPokemonList) {
               fetchPokemonList();
+              dispatch({
+                type: types.updateHomeStatus,
+                payload: {
+                  currentAction: homeStatus.fetchingPokemonList,
+                  fetchError: null,
+                },
+              });
+            } else {
+              dispatch({
+                type: types.updateHomeStatus,
+                payload: {
+                  currentAction: homeStatus.fetchPokemonTypesAgain,
+                  fetchError: null,
+                },
+              });
             }
           }}
         />

@@ -19,6 +19,10 @@
   --steel: #b7b7ce;
   --fairy: #d685ad;
 
+  --primary-blue: #395ea9;
+  --primary-dark-blue: #1c3165;
+  --primary-yellow: #ffcb05;
+
   /* Border radius  */
   --b-radius: 20px;
 
@@ -42,6 +46,7 @@
   --high: linear-gradient(to right, #77ad5d, #459121);
 
   --pokeball-red: #ff3838;
+  --pokeball-red-catch: #fcff38ea;
 
   font-family: "Barlow Semi Condensed", sans-serif;
 }

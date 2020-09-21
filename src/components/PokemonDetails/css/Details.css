@@ -1,0 +1,74 @@
+.pokemon-details {
+  padding: 140px 26px 26px;
+  background-color: var(--text-light-gray-primary);
+  min-height: 100vh;
+  grid-template-columns: 1fr;
+}
+
+.pokemon-info {
+  max-width: 960px;
+}
+
+.pokemon-details .pokemon-card {
+  padding: 40px 0;
+}
+
+.pokemon-details .extra-info {
+  color: var(--text-black);
+  padding: 22px 0;
+}
+
+.pokemon-details .extra-info h1 {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--text-black);
+  margin-bottom: 10px;
+}
+
+.pokemon-details .extra-info h2 {
+  font-size: 18px;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+
+.pokemon-details .extra-info p {
+  font-size: 20px;
+  margin-bottom: 12px;
+  max-width: 600px;
+}
+
+.pokemon-details .extra-info h2:not(:last-child) {
+  margin-bottom: 12px;
+}
+
+.pokemon-details .extra-info span {
+  font-weight: 400;
+}
+
+.pokemon-details .back-button {
+  border-radius: 6px;
+  width: 140px;
+  background-color: var(--btn-bg);
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 18px;
+  padding: 13px;
+  color: var(--primary-blue);
+  box-shadow: var(--shadow);
+  z-index: 50;
+  margin-bottom: 12px;
+}
+.pokemon-details .back-button svg {
+  fill: var(--primary-blue);
+  margin-right: 12px;
+}
+
+.pokemon-details .loading-pokeball {
+  margin: auto;
+}
+
+@media screen and (min-width: 1280px) {
+  .pokemon-details {
+    padding: 180px 200px 30px;
+  }
+}

@@ -1,17 +1,17 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./css/tailwind/tailwind.output.css";
-import { Header } from "./components/Header/Header";
 import { AppContext } from "./PokemonContext/PokemonContext";
-import { Home } from "./components/Home/Home";
+import { BrowserRouter } from "react-router-dom";
+import { AppRouter } from "./routers/AppRouter";
 const ROOT = document.getElementById("root");
-
 const App = () => {
   return (
-    <AppContext>
-      <Header />
-      <Home />
-    </AppContext>
+    <BrowserRouter>
+      <AppContext>
+        <AppRouter />
+      </AppContext>
+    </BrowserRouter>
   );
 };
 

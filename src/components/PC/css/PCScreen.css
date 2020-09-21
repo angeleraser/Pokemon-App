@@ -1,0 +1,98 @@
+.pc-screen {
+  padding: 100px 0 0;
+  min-height: 100vh;
+  background-color: cadetblue;
+}
+
+.pc-screen .pokemon-wrapper {
+  display: grid;
+  grid-template-columns: repeat(4, 60px);
+  grid-template-rows: min-content;
+  row-gap: 30px;
+  column-gap: 30px;
+  place-content: center;
+  padding: 26px;
+}
+
+.pc-screen h2 {
+  font-size: 42px;
+  text-align: center;
+  max-width: 320px;
+  padding: 8px;
+  text-transform: uppercase;
+  color: #333;
+  border-radius: var(--b-radius);
+  background-color: cadetblue;
+  box-shadow: var(--shadow);
+}
+
+@media screen and (min-width: 480px) {
+  .pc-screen .pokemon-wrapper {
+    grid-template-columns: repeat(5, 60px);
+  }
+}
+
+@media screen and (min-width: 580px) {
+  .pc-screen .pokemon-wrapper {
+    grid-template-columns: repeat(6, 60px);
+  }
+}
+
+@media screen and (min-width: 680px) {
+  .pc-screen .pokemon-wrapper {
+    grid-template-columns: repeat(7, 60px);
+  }
+  .pc-screen {
+    padding-top: 140px;
+  }
+}
+
+@media screen and (min-width: 780px) {
+  .pc-screen .pokemon-wrapper {
+    grid-template-columns: repeat(8, 60px);
+  }
+}
+
+@media screen and (min-width: 880px) {
+  .pc-screen .pokemon-wrapper {
+    grid-template-columns: repeat(9, 60px);
+  }
+}
+
+@media screen and (min-width: 980px) {
+  .pc-screen .pokemon-wrapper {
+    grid-template-columns: repeat(10, 60px);
+  }
+}
+
+@media screen and (min-width: 1080px) {
+  .pc-screen .pokemon-wrapper {
+    grid-template-columns: repeat(11, 60px);
+  }
+}
+
+@media screen and (min-width: 1180px) {
+  .pc-screen .pokemon-wrapper {
+    grid-template-columns: repeat(12, 60px);
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .pc-screen .pokemon-wrapper {
+    grid-template-columns: repeat(14, 60px);
+  }
+  .pc-screen {
+    padding-top: 160px;
+  }
+}
+
+@media screen and (min-width: 1380px) {
+  .pc-screen .pokemon-wrapper {
+    grid-template-columns: repeat(15, 60px);
+  }
+}
+@media screen and (min-width: 1440px) {
+  .pc-screen .pokemon-wrapper {
+    grid-template-columns: repeat(16, 60px);
+  }
+}

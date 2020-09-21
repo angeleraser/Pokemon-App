@@ -2,9 +2,24 @@ import { useEffect, useRef, useState } from "react";
 import { useCallback } from "react";
 import PropTypes from "prop-types";
 
-const getPokemon = async (url) => {
-  const data = await (await fetch(url)).json();
-  return data;
+export const getPokemon = async (url) => {
+  const info = await (await fetch(url)).json();
+  const {
+    flavor_text_entries,
+    generation,
+    habitat,
+    genera,
+    capture_rate,
+  } = await (await fetch(info.species.url)).json();
+  return {
+    ...info,
+    description: flavor_text_entries.find((text) => text.language.name === "en")
+      ?.flavor_text,
+    generation: generation.name,
+    habitat: habitat?.name,
+    genera: genera[7]?.genus,
+    captureRate: capture_rate,
+  };
 };
 const getAllPokemon = async (arr) => {
   const requests = arr.map(async (url) => await getPokemon(url));

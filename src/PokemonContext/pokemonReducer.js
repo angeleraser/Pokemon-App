@@ -19,6 +19,17 @@ export const initialState = {
     },
     shouldFetchData: true,
   },
+  detailsPage: {
+    pokemonList: [],
+    currentPokemon: null,
+  },
+  arena: {
+    enabled: false,
+    currentPokemon: null,
+  },
+  pc: {
+    pokemonList: [],
+  },
 };
 export const pokemonReducer = (state, action) => {
   switch (action.type) {
@@ -69,6 +80,54 @@ export const pokemonReducer = (state, action) => {
           status: {
             ...action.payload,
           },
+        },
+      };
+    case types.savePokemonListDetails:
+      return {
+        ...state,
+        detailsPage: {
+          ...state.detailsPage,
+          pokemonList: [...state.detailsPage.pokemonList, action.payload],
+        },
+      };
+    case types.setPokemonDetails:
+      return {
+        ...state,
+        detailsPage: {
+          ...state.detailsPage,
+          currentPokemon: action.payload,
+        },
+      };
+    case types.enableArena:
+      return {
+        ...state,
+        arena: {
+          ...state.arena,
+          enabled: true,
+        },
+      };
+    case types.setArenaPokemon:
+      return {
+        ...state,
+        arena: {
+          ...state.arena,
+          currentPokemon: action.payload,
+        },
+      };
+    case types.disableArena:
+      return {
+        ...state,
+        arena: {
+          ...state.arena,
+          enabled: false,
+          currentPokemon: null,
+        },
+      };
+    case types.savePokemonInPC:
+      return {
+        ...state,
+        pc: {
+          pokemonList: [...state.pc.pokemonList, action.payload],
         },
       };
     default:

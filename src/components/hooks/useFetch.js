@@ -33,6 +33,7 @@ export const useFetch = () => {
       .then((response) => response.json())
       .then((data) => {
         if (isMounted.current) {
+          console.log('Image found!')
           setstate({
             data,
             error: null,
@@ -42,12 +43,12 @@ export const useFetch = () => {
           console.log("useFetch is not working...");
         }
       })
-      .catch(() => {
+      .catch((error) => {
         // Sets error message
         setstate({
           data: null,
           loading: false,
-          error: "Data cannot be loaded... :(",
+          error,
         });
       });
   }, []); // <-- URL dependency detect when URL changes

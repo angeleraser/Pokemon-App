@@ -7,18 +7,18 @@ export const getPokemonProps = (pokemon, con) => {
     stats,
     sprites: {
       other: {
-        dream_world: { front_default: image },
+        "official-artwork": { front_default: officialArtwork },
+        dream_world: { front_default: dreamWorld },
       },
       front_default,
-      versions:{
-        "generation-viii":{
-          icons
-        }
-      }
+      versions: {
+        "generation-viii": { icons },
+      },
     },
     id,
     types,
     abilities,
+    captureRate,
   } = pokemon;
   if (con !== "All") {
     return {
@@ -27,12 +27,14 @@ export const getPokemonProps = (pokemon, con) => {
       height,
       weight,
       id,
-      image,
+      officialArtwork,
+      dreamWorld,
       front_default,
       types,
       stats,
       abilities,
       icons,
+      captureRate,
     };
   } else {
     return {

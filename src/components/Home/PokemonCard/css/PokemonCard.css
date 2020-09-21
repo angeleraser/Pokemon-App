@@ -1,6 +1,7 @@
 .pokemon-card {
   padding: 60px 0;
 }
+
 .pokemon-card .data {
   border-radius: var(--b-radius);
   box-shadow: var(--shadow);
@@ -9,6 +10,20 @@
   padding: 20px;
   max-width: 312px;
   color: var(--text-black);
+}
+
+.pokemon-card .catch-btn {
+  left: 18px;
+  bottom: 18px;
+  padding: 1px 12px;
+  font-weight: 600;
+  background-color: var(--pokeball-red);
+  color: #fff;
+  border-radius: 4px;
+}
+
+.pokemon-card .data.pointer .pokemon-img-id {
+  cursor: pointer;
 }
 
 .pokemon-card:nth-child(odd) {

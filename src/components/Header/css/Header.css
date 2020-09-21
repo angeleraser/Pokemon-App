@@ -9,7 +9,19 @@
 
 .header img {
   display: inline-block;
-  height: 80px;
-  width: 240px;
+  height: 40px;
+  width: 120px;
 }
 
+@media screen and (min-width: 1024px) {
+  .header img {
+    height: 80px;
+    width: 240px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .header {
+    padding: 26px 76px;
+  }
+}

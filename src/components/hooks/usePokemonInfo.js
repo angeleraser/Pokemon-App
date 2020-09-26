@@ -19,31 +19,37 @@ export const usePokemonInfo = (URL) => {
   }, []);
 
   const makeRequest = useCallback(() => {
-    setState({
-      response: null,
-      loading: false,
-      error: null,
-    });
-    console.log("Fetching pokemon details...");
-    getPokemon(URL)
-      .then((resp) => {
-        console.log("Fetch pokemon details completed");
-        if (isMounted.current) {
+    if (isMounted.current) {
+      console.log("Fetching pokemon details...");
+      // Reset the fetch state
+      setState({
+        response: null,
+        loading: false,
+        error: null,
+      });
+      getPokemon(URL, () => {
+        setState({
+          response: null,
+          loading: false,
+          error: "Error 404",
+        });
+      })
+        .then((resp) => {
+          console.log("Fetch pokemon details completed");
           setState({
             response: resp,
             loading: false,
             error: null,
           });
-        }
-      })
-      .catch((error) => {
-        console.log("Failed to fetch pokemon details");
-        setState({
-          response: null,
-          loading: false,
-          error,
+        })
+        .catch(() => {
+          setState((prev) => ({
+            ...prev,
+            response: null,
+            loading: false,
+          }));
         });
-      });
+    }
   }, [URL]);
 
   return [

@@ -1,61 +1,85 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useContext, useState } from "react";
+import { useRef } from "react";
 import { useEffect } from "react";
 import { useHistory } from "react-router";
+import { calcPercentage } from "../../functions/calcPercentage";
 import { delay } from "../../functions/delay";
-import { getSuccesRate } from "../../functions/getSucessRate";
+import { pokemonIsCatched } from "../../functions/pokemonIsCatched";
 import { PokemonContext } from "../../PokemonContext/PokemonContext";
 import { types } from "../../types/types";
 import { pokemonAnimations } from "./animations";
+
 export const Pokemon = ({ pokemon, arenaContext }) => {
+  const pokeballSuccessSound = useRef(null);
+  const pokeballErrorSound = useRef(null);
   const [animation, setAnimation] = useState({});
+  const sendPokemoToPC = () => {
+    dispatch({ type: types.savePokemonInPC, payload: currentPokemon });
+    dispatch({ type: types.catchPokemon, payload: currentPokemon.name });
+    arenaDispatch({ type: types.disableArena });
+    history.replace("/pc");
+  };
+  const playPokeballSuccessSound = () => {
+    const sound = pokeballSuccessSound.current;
+    sound.currentTime = 0;
+    sound.play();
+    sound.addEventListener("ended", sendPokemoToPC);
+  };
+  const playPokeballErrorSound = () => {
+    pokeballErrorSound.current.currentTime = 0.45;
+    pokeballErrorSound.current.play();
+  };
   const history = useHistory();
   const {
-    state: {
-      arena: { currentPokemon },
-    },
+    arena: { currentPokemon },
     dispatch,
+    arenaDispatch,
   } = useContext(PokemonContext);
   const {
-    state: { pokeball },
-    setState,
+    pokeballState,
+    setPokeballState,
+    pokemonState: { currentHP, maxHP },
   } = arenaContext;
   const catchPokemon = (isCatch) => {
-    setState({
-      pokeball: {
-        isThrow: false,
-        success: isCatch,
-        error: !isCatch,
-      },
+    setPokeballState({
+      isThrow: false,
+      success: isCatch,
+      error: !isCatch,
     });
   };
-
   useEffect(() => {
     switch (true) {
-      case pokeball.isThrow:
+      case pokeballState.isThrow:
         delay(() => setAnimation(pokemonAnimations.shrink), 800);
-        delay(() => catchPokemon(getSuccesRate(pokemon.captureRate)), 5000);
+        delay(
+          () =>
+            catchPokemon(
+              pokemonIsCatched(
+                currentPokemon.captureRate,
+                calcPercentage(currentHP, maxHP)
+              )
+            ),
+          6000
+        );
         break;
-      case pokeball.success:
-        delay(() => {
-          dispatch({ type: types.savePokemonInPC, payload: currentPokemon });
-          dispatch({ type: types.disableArena });
-          history.replace("/pc");
-        }, 2000);
+      case pokeballState.success:
+        playPokeballSuccessSound();
         break;
-      case pokeball.error:
+      case pokeballState.error:
+        playPokeballErrorSound();
         setAnimation(pokemonAnimations.grow);
         break;
       default:
         break;
     }
-  }, [pokeball]);
+  }, [pokeballState]);
 
   useEffect(() => {
-    if (pokeball.success) {
-      console.log("Pokemon Captured!");
+    if (currentHP <= 0) {
+      setAnimation(pokemonAnimations.shrink);
     }
-  }, [pokeball]);
+  }, [currentHP]);
 
   return (
     <div style={{ ...animation }} className="pokemon-body absolute">
@@ -69,6 +93,14 @@ export const Pokemon = ({ pokemon, arenaContext }) => {
           pokemon.imageURL?.sprites.front_default
         }
       />
+      <audio
+        id="pokeball-success-sound"
+        ref={pokeballSuccessSound}
+        src="/sounds/pokeball-success.mp3"></audio>
+      <audio
+        id="pokeball-error-sound"
+        ref={pokeballErrorSound}
+        src="/sounds/pokeball-error.mp3"></audio>
     </div>
   );
 };

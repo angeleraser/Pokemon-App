@@ -3,6 +3,7 @@ export const homeStatus = {
   failedInFetchPokemonList: "Failed in fetch Pokemon List",
   failedInFetchPokemonTypes: "Failed in fetch Pokemon Types",
   fetchingPokemonTypes: "Fetching Pokemon Types...",
-  updatePokemonList: "Update Pokemon List...",
-  fetchPokemonTypesAgain: "Fetch Pokemon Types Again",
+  fetchPokemonTypesAgain: "Fetching Pokemon types again...",
+  updatePokemonList: "Updating Pokemon List...",
+  loadingMorePokemon: "Loading more pokemon...",
 };

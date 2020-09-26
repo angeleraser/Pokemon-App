@@ -33,7 +33,6 @@ export const useFetch = () => {
       .then((response) => response.json())
       .then((data) => {
         if (isMounted.current) {
-          console.log('Image found!')
           setstate({
             data,
             error: null,

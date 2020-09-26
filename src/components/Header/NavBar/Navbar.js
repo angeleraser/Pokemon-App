@@ -2,13 +2,12 @@ import React from "react";
 import { useState } from "react";
 import MenuButton from "./MenuButton";
 import { Menu } from "./Menu";
-import "./css/NavBar.css";
 const Navbar = () => {
-  const [show, setShow] = useState(false);
+  const [hidden, sethidden] = useState(true);
   return (
     <div className="flex nav-bar flex-col w-full items-center">
-      <MenuButton displayMenu={setShow} isActive={show} />
-      <Menu hiddenMenu={setShow} isHidden={show} />
+      <MenuButton displayMenu={sethidden} isActive={hidden} />
+      <Menu hiddenMenu={sethidden} isHidden={hidden} />
     </div>
   );
 };

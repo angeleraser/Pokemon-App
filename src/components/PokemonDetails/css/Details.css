@@ -7,10 +7,14 @@
 
 .pokemon-info {
   max-width: 960px;
+  animation-duration: 1.5s !important;
 }
 
 .pokemon-details .pokemon-card {
   padding: 40px 0;
+}
+.pokemon-details .pokemon-card .data {
+  animation: none;
 }
 
 .pokemon-details .extra-info {

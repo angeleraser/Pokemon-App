@@ -8,23 +8,21 @@ import { types } from "../../../types/types";
 
 export const CatchButton = ({ pokemonName }) => {
   const {
-    dispatch,
     state: {
       global: { allFetchedPokemon },
       detailsPage,
     },
+    arenaDispatch,
   } = useContext(PokemonContext);
   const history = useHistory();
   return (
     <button
       onClick={() => {
         history.push(`/arena/${pokemonName}`);
-        dispatch({ type: types.enableArena });
+        arenaDispatch({ type: types.enableArena });
         const pokemonInGlobalList = allFetchedPokemon.length
           ? findPokemon(
-              getConcatenatedArr(
-                allFetchedPokemon.map((item) => item.pokemonList)
-              ),
+              getConcatenatedArr(allFetchedPokemon.map((item) => item.loaded)),
               pokemonName
             )
           : null;
@@ -32,7 +30,7 @@ export const CatchButton = ({ pokemonName }) => {
           detailsPage.pokemonList,
           pokemonName
         );
-        dispatch({
+        arenaDispatch({
           type: types.setArenaPokemon,
           payload: pokemonInGlobalList || pokemonInDetailsPageList,
         });

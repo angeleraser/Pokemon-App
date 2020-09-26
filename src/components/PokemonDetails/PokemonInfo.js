@@ -7,10 +7,12 @@ import { PokemonCard } from "../Home/PokemonCard/PokemonCard";
 
 export const PokemonInfo = ({ data }) => {
   return (
-    <div className="pokemon-info w-full grid">
+    <div className="pokemon-info w-full animate__animated animate__slideInLeft grid">
       <PokemonCard disableLink={true} data={data} />
       <div
-        style={{ borderTop: `2px solid var(--${data.types[0].type.name}) ` }}
+
+
+        style={{ borderTop: `2px solid var(--${data.types[0].type.name})` }}
         className="extra-info w-full flex flex-col">
         <h1
           style={{
@@ -34,6 +36,15 @@ export const PokemonInfo = ({ data }) => {
         <h2>
           Abilities: <span>{getPokemonAbilities(data.abilities)}.</span>
         </h2>
+        {(!!data.sprites.front_shiny || !!data.sprites.back_shiny) && (
+          <div className="shiny-version flex flex-col items-start">
+            <h1>Shiny version:</h1>
+            <div className="pokemon-shiny-images flex items-center">
+              <img src={data.sprites.front_shiny} alt={`${data.name} front shiny`} />
+              <img src={data.sprites.back_shiny} alt={`${data.name} back shiny`} />
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

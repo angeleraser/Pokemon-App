@@ -19,6 +19,7 @@ export const getPokemonProps = (pokemon, con) => {
     types,
     abilities,
     captureRate,
+    isCatched,
   } = pokemon;
   if (con !== "All") {
     return {
@@ -35,6 +36,7 @@ export const getPokemonProps = (pokemon, con) => {
       abilities,
       icons,
       captureRate,
+      isCatched,
     };
   } else {
     return {

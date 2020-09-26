@@ -84,7 +84,7 @@
   color: var(--primary-blue);
 }
 
-@media screen and (min-width: 700px) {
+@media screen and (min-width: 620px) {
   .menu.menu.active{
     background-color: #fff;
   }

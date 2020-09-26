@@ -29,7 +29,7 @@ export const pokeballAnimations = {
 
 export const pokemonAnimations = {
   shrink: {
-    width: "10px",
+    width: "0px",
   },
   grow: {
     width: "86px",

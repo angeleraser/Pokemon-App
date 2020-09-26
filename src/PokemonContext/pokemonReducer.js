@@ -1,30 +1,27 @@
+import { updatePokemonListWhenThePokemonIsCatched } from "../functions/updatePokemonList";
 import { types } from "../types/types";
 export const initialState = {
   global: {
     allFetchedPokemon: [],
   },
   homePage: {
-    currentPokemon: {
-      list: [],
-      type: "",
-    },
     pokemonTypes: [],
     selected: {
       type: "",
-      pokemonListToFetch: [],
+      totalPokemon: [],
+      loaded: [],
     },
+    currentList: [],
     status: {
-      fetchError: null,
-      currentAction: null,
+      current: null,
+      isFetching: false,
+      error: null,
+      disableActions: false,
     },
     shouldFetchData: true,
   },
   detailsPage: {
     pokemonList: [],
-    currentPokemon: null,
-  },
-  arena: {
-    enabled: false,
     currentPokemon: null,
   },
   pc: {
@@ -52,12 +49,14 @@ export const pokemonReducer = (state, action) => {
           },
         },
       };
-    case types.savePokemon:
+    case types.savePokemonInGlobalList:
       return {
         ...state,
         global: {
           allFetchedPokemon: [
-            ...state.global.allFetchedPokemon,
+            ...state.global.allFetchedPokemon.filter(
+              (pokemonList) => pokemonList.type !== action.payload.type
+            ),
             action.payload,
           ],
         },
@@ -67,9 +66,17 @@ export const pokemonReducer = (state, action) => {
         ...state,
         homePage: {
           ...state.homePage,
-          currentPokemon: {
+          selected: {
             ...action.payload,
           },
+        },
+      };
+    case types.updateCurrentList:
+      return {
+        ...state,
+        homePage: {
+          ...state.homePage,
+          currentList: [...action.payload],
         },
       };
     case types.updateHomeStatus:
@@ -98,36 +105,52 @@ export const pokemonReducer = (state, action) => {
           currentPokemon: action.payload,
         },
       };
-    case types.enableArena:
-      return {
-        ...state,
-        arena: {
-          ...state.arena,
-          enabled: true,
-        },
-      };
-    case types.setArenaPokemon:
-      return {
-        ...state,
-        arena: {
-          ...state.arena,
-          currentPokemon: action.payload,
-        },
-      };
-    case types.disableArena:
-      return {
-        ...state,
-        arena: {
-          ...state.arena,
-          enabled: false,
-          currentPokemon: null,
-        },
-      };
     case types.savePokemonInPC:
       return {
         ...state,
         pc: {
           pokemonList: [...state.pc.pokemonList, action.payload],
+        },
+      };
+    case types.catchPokemon:
+      return {
+        ...state,
+        global: {
+          allFetchedPokemon: state.global.allFetchedPokemon.map(
+            (pokemonList) => {
+              return {
+                ...pokemonList,
+                loaded: updatePokemonListWhenThePokemonIsCatched(
+                  pokemonList.loaded,
+                  action.payload //pokemon name
+                ),
+              };
+            }
+          ),
+        },
+        homePage: {
+          ...state.homePage,
+          selected: {
+            ...state.homePage.selected,
+            loaded: updatePokemonListWhenThePokemonIsCatched(
+              state.homePage.selected.loaded,
+              action.payload
+            ),
+          },
+        },
+        detailsPage: {
+          ...state.detailsPage,
+          pokemonList: updatePokemonListWhenThePokemonIsCatched(
+            state.detailsPage.pokemonList,
+            action.payload //pokemon name
+          ),
+        },
+      };
+    case types.updatePokemonSavedInPC:
+      return {
+        ...state,
+        pc: {
+          pokemonList: [...state.pc.pokemonList, ...action.payload],
         },
       };
     default:

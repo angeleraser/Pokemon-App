@@ -2,7 +2,12 @@
   padding-top: 140px;
   height: 100vh;
   padding: 140px 26px 26px;
-  max-height: 768px;
+  position: relative;
+}
+.arena-wrapper .gotcha-svg {
+  width: 200px;
+  position: absolute;
+  top: -40px;
 }
 
 .arena-wrapper .circle {
@@ -35,8 +40,45 @@
   animation: none;
 }
 
-.arena-wrapper .pokeball.success::before{
-  animation: pokeballSuccess .4s alternate linear infinite;
+.arena-wrapper .pokemon-hp-wrapper {
+  position: absolute;
+  bottom: 150px;
+  max-width: 268px;
+  font-weight: 600;
+  color: #fff;
+  width: 100%;
+}
+
+.arena-wrapper .pokemon-hp {
+  background-color: var(--text-light-gray-secondary);
+  width: 100%;
+  font-size: 20px;
+  align-self: center;
+  border-radius: 20px;
+  margin-left: 12px;
+}
+
+.arena-wrapper button.attack {
+  border-radius: 6px;
+  width: 160px;
+  background-color: var(--primary-blue);
+  text-transform: uppercase;
+  color: #fff;
+  font-weight: 600;
+  font-size: 18px;
+  padding: 13px;
+  position: absolute;
+  top: 120px;
+}
+
+.arena-wrapper .pokemon-hp .bar {
+  height: 15px;
+  border-radius: 20px;
+  transition: all .4s;
+}
+
+.arena-wrapper .pokeball.success::before {
+  animation: pokeballSuccess 0.4s alternate linear infinite;
 }
 
 .arena-wrapper .pokeball__button {
@@ -54,7 +96,7 @@
   animation-iteration-count: infinite;
 }
 
-.arena-wrapper .pokeball.success .pokeball__button{
+.arena-wrapper .pokeball.success .pokeball__button {
   animation: none;
 }
 
@@ -103,5 +145,11 @@
 @keyframes pokeballSuccess {
   100% {
     background-color: #fff;
+  }
+}
+
+@media screen and (min-width:1024px) {
+  .arena-wrapper button.attack {
+    top: 160px;
   }
 }

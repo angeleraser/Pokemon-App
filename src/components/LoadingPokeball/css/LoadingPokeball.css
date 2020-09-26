@@ -1,5 +1,9 @@
 .loading-pokeball {
-  padding: 26px 40px;
+  padding: 0 26px;
+}
+
+.loading-pokeball .pikachu-svg {
+  height: 250px;
 }
 
 /* Poké Styles */
@@ -72,7 +76,7 @@
   text-align: center;
 }
 
-.loading-pokeball p:last-of-type{
+.loading-pokeball p:last-of-type {
   margin-top: 0;
 }
 

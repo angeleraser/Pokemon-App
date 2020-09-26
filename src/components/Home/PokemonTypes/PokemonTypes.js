@@ -26,13 +26,15 @@ export const PokemonTypes = () => {
 
   // Fetch pokemon types
   useEffect(() => {
-    if (!pokemonTypes.length & shouldFetchData) {
+    if (!pokemonTypes.length && shouldFetchData) {
       fetchPokemonTypes();
       dispatch({
         type: types.updateHomeStatus,
         payload: {
-          currentAction: homeStatus.fetchingPokemonTypes,
-          fetchError: null,
+          current: homeStatus.fetchingPokemonTypes,
+          disableActions: true,
+          error: null,
+          isFetching: true,
         },
       });
     }
@@ -42,13 +44,21 @@ export const PokemonTypes = () => {
   useEffect(() => {
     if (!!response) {
       dispatch({ type: types.savePokemonTypes, payload: response });
-      dispatch({ type: types.selectType, payload: response[0] }); // Normal type
-      // Back Home status to initial state
+      // Normal type
+      dispatch({
+        type: types.selectType,
+        payload: {
+          ...response[0],
+          loaded: [],
+        },
+      });
       dispatch({
         type: types.updateHomeStatus,
         payload: {
-          currentAction: null,
-          fetchError: null,
+          current: null,
+          disableActions: false,
+          error: null,
+          isFetching: false,
         },
       });
     }
@@ -56,30 +66,31 @@ export const PokemonTypes = () => {
 
   // Set an error if pokemon list cannot be fetched
   useEffect(() => {
-    !!fetchPokemonTypesError &&
+    if (!!fetchPokemonTypesError) {
       dispatch({
         type: types.updateHomeStatus,
         payload: {
-          currentAction: null,
-          fetchError: homeStatus.failedInFetchPokemonTypes,
+          current: homeStatus.failedInFetchPokemonTypes,
+          disableActions: true,
+          error: fetchPokemonTypesError,
+          isFetching: false,
         },
       });
+    }
   }, [fetchPokemonTypesError]);
 
   // Fetch pokemon list again
   useEffect(() => {
     if (
-      status.currentAction === homeStatus.fetchPokemonTypesAgain &&
-      !pokemonTypes.length
+      status.current === homeStatus.fetchPokemonTypesAgain &&
+      shouldFetchData
     ) {
       fetchPokemonTypes();
     }
   }, [status]);
-
+ 
   const names = useMemo(() => {
-    return pokemonTypes.filter(
-      ({ pokemonListToFetch }) => pokemonListToFetch.length > 0
-    );
+    return pokemonTypes.filter(({ totalPokemon }) => totalPokemon.length > 0);
   }, [pokemonTypes]);
 
   return (

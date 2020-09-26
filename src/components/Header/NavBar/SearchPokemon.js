@@ -8,15 +8,23 @@ import useForm from "../../hooks/useForm";
 
 export const SearchPokemon = ({ hiddenMenu }) => {
   const [{ search }, handleInputValue, reset] = useForm({ search: "" });
-  const { dispatch } = useContext(PokemonContext);
+  const {
+    dispatch,
+    arenaDispatch,
+    state: { homePage },
+  } = useContext(PokemonContext);
   const { push } = useHistory();
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (search.trim().length > 2) {
+    if (
+      search.trim().length > 2 &&
+      !homePage.status.isFetching &&
+      !homePage.status.current
+    ) {
       reset();
       hiddenMenu((prev) => !prev);
       dispatch({ type: types.setPokemonDetails, payload: null }); // resets the pokemon details to show loading animation
-      dispatch({ type: types.disableArena}); // resets the pokemon details to show loading animation
+      arenaDispatch({ type: types.disableArena }); // resets the pokemon details to show loading animation
       push(`/pokemon/${search.toLowerCase()}`);
     }
   };

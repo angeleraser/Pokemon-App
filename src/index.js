@@ -4,6 +4,7 @@ import "./css/tailwind/tailwind.output.css";
 import { AppContext } from "./PokemonContext/PokemonContext";
 import { BrowserRouter } from "react-router-dom";
 import { AppRouter } from "./routers/AppRouter";
+import "animate.css";
 const ROOT = document.getElementById("root");
 const App = () => {
   return (

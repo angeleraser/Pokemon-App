@@ -8,7 +8,7 @@ const getPokemonListByType = async (url) => {
   const info = await (await fetch(url)).json();
   return {
     type: info.name,
-    pokemonListToFetch: info.pokemon.map(({ pokemon: { url } }) => url),
+    totalPokemon: info.pokemon.map(({ pokemon: { url } }) => url),
   };
 };
 
@@ -36,10 +36,16 @@ export const usePokemonTypes = (url = "") => {
 
   const makeRequest = useCallback(() => {
     console.log("Fetching pokemon types...");
-    isMounted.current &&
+    if (isMounted.current) {
+      // Reset the state 
+      setState({
+        response: null,
+        loading: true,
+        error: null,
+      });
       getAllPokemonTypes(url)
         .then((resp) => {
-          console.log("Fetching pokemon types completed!");
+          console.log("Fetch pokemon types completed!");
           setState({
             response: resp,
             loading: false,
@@ -54,6 +60,7 @@ export const usePokemonTypes = (url = "") => {
             error,
           });
         });
+    }
   }, [url]);
 
   return [

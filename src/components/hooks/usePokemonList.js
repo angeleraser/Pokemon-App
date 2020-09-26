@@ -2,8 +2,12 @@ import { useEffect, useRef, useState } from "react";
 import { useCallback } from "react";
 import PropTypes from "prop-types";
 
-export const getPokemon = async (url) => {
-  const info = await (await fetch(url)).json();
+export const getPokemon = async (url, onError) => {
+  const response = await fetch(url);
+  if (response.status === 404) {
+    onError && onError();
+  }
+  const info = await response.json();
   const {
     flavor_text_entries,
     generation,
@@ -19,6 +23,7 @@ export const getPokemon = async (url) => {
     habitat: habitat?.name,
     genera: genera[7]?.genus,
     captureRate: capture_rate,
+    isCatched: false,
   };
 };
 const getAllPokemon = async (arr) => {

@@ -10,21 +10,19 @@ import { PrivateRoute } from "./Routes/PrivateRoute";
 
 export const AppRouter = () => {
   const {
-    state: {
-      arena: { enabled },
-    },
+    arena,
   } = useContext(PokemonContext);
   return (
     <Router>
       <Header />
       <Switch>
         <PrivateRoute
-          enabled={enabled}
+          enabled={arena.enabled}
           exact={true}
           component={ArenaScreen}
           path={"/arena/:pokemon"}
         />
-        <MainRoutes path={"/"} component={DashboardRoutes} enabled={enabled} />
+        <MainRoutes path={"/"} component={DashboardRoutes} enabled={arena.enabled} />
       </Switch>
     </Router>
   );

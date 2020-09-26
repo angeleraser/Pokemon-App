@@ -7,7 +7,7 @@ const MenuButton = ({ displayMenu, isActive }) => {
         displayMenu((prev) => !prev);
       }}
       className={`menu-button flex-col flex items-center ${
-        isActive ? "active" : ""
+        !isActive ? "active" : ""
       }`}>
       <span className="line"></span>
     </button>

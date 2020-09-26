@@ -1,7 +1,8 @@
 export const types = {
   savePokemonTypes: "[home] savePokemonTypes",
   selectType: "[home] selectType",
-  savePokemon: "[home] savePokemon",
+  updateCurrentList: "[home] updateCurrentList",
+  savePokemonInGlobalList: "[home] savePokemonInGlobalList",
   setCurrentPokemonList: "[home] setCurrentPokemonList",
   setFetchError: "[home] setFetchError",
   updatePokemonList: "[home] updatePokemonList",
@@ -14,4 +15,6 @@ export const types = {
   throwPokeball: "[arena] throwPokeball",
   pokeballSuccess: "[arena] pokeballSuccess",
   savePokemonInPC: "[pc] savePokemon",
+  updatePokemonSavedInPC: "[pc] updatePokemonSavedInPC",
+  catchPokemon: "[arena] catchPokemon",
 };

@@ -71,16 +71,16 @@
   .list-wrapper .types-list {
     display: inline-block;
     height: 100%;
-    max-height: calc(100vh - 130px);
+    max-height: calc(100vh - 92px);
     overflow-x: hidden;
     max-width: 200px;
     padding: 20px 10px 20px 15px;
-    top: 140px;
+    top: 92px;
   }
 
   .list-wrapper .loading-types-list {
-    max-height: calc(100vh - 110px);
-    top: 140px;
+    max-height: calc(100vh - 92px);
+    top: 92px;
   }
 
   .list-wrapper .types-list > button:not(:last-child),

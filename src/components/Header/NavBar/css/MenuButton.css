@@ -48,7 +48,7 @@
   transform: translate(0, 7px) rotate(-45deg);
 }
 
-@media screen and (min-width:700px) {
+@media screen and (min-width:620px) {
   .menu-button {
     display: none;
   }

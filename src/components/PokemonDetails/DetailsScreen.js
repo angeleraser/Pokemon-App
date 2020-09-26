@@ -33,7 +33,7 @@ export const DetailsScreen = ({
   const globalPokemonList = useMemo(
     () =>
       allFetchedPokemon.length
-        ? getConcatenatedArr(allFetchedPokemon.map((item) => item.pokemonList))
+        ? getConcatenatedArr(allFetchedPokemon.map((item) => item.loaded))
         : [],
     [allFetchedPokemon]
   );
@@ -59,6 +59,7 @@ export const DetailsScreen = ({
       );
     }
   }, [pokemonToFetch, allFetchedPokemon]);
+  
   // Save the pokemon in the details page pokemon list
   useEffect(() => {
     if (!!response) {
@@ -73,6 +74,7 @@ export const DetailsScreen = ({
       );
     }
   }, [response, dispatch]);
+
   return (
     <div className="w-full pokemon-details flex flex-col">
       {!!detailsPage.currentPokemon ? (

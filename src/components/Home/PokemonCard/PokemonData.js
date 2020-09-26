@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useHistory } from "react-router";
 import { getFormatedStr } from "../../../functions/getFormatedStr";
 import { getFormatedUnity } from "../../../functions/getFormatedUnity";
+import { PokemonContext } from "../../../PokemonContext/PokemonContext";
 import { CatchButton } from "./CatchButton";
 import { Pokeball } from "./Pokeball";
 import { PokemonSprite } from "./PokemonSprite";
@@ -9,9 +10,12 @@ import { PokemonTypes } from "./PokemonTypes";
 
 export const PokemonData = ({ pokemon, disableLink }) => {
   const { push: historyPush } = useHistory();
+  const {
+    state: { homePage },
+  } = useContext(PokemonContext);
   const pokemonIsCurrentlyCatched = localStorage.getItem("catchedPokemon")
     ? JSON.parse(localStorage.getItem("catchedPokemon")).some(
-        ({name}) => name === pokemon.name
+        ({ name }) => name === pokemon.name
       )
     : pokemon.isCatched;
   return (
@@ -34,7 +38,10 @@ export const PokemonData = ({ pokemon, disableLink }) => {
       </span>
       <div
         onClick={() => {
-          !disableLink && historyPush(`/pokemon/${pokemon.name}`);
+          !disableLink &&
+            !homePage.status.current &&
+            !homePage.status.isFetching &&
+            historyPush(`/pokemon/${pokemon.name}`);
         }}
         className="pokemon-img-id w-full relative">
         <PokemonSprite pokemon={pokemon} />

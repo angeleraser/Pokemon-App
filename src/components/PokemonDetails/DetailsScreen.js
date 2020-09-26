@@ -46,20 +46,25 @@ export const DetailsScreen = ({
     ) {
       fetchPokemonInfo();
     } else {
-      dispatch({ type: types.setPokemonDetails, payload: null });
-      delay(
-        () =>
-          dispatch({
-            type: types.setPokemonDetails,
-            payload:
-              findPokemon(globalPokemonList, pokemonToFetch) ||
-              findPokemon(detailsPage.pokemonList, pokemonToFetch),
-          }),
-        1000
-      );
+      dispatch({
+        type: types.setPokemonDetails,
+        payload:
+          findPokemon(globalPokemonList, pokemonToFetch) ||
+          findPokemon(detailsPage.pokemonList, pokemonToFetch),
+      });
     }
   }, [pokemonToFetch, allFetchedPokemon]);
-  
+
+  // Reset current pokemon to clean the browser cache
+  useEffect(() => {
+    return () => {
+      dispatch({
+        type: types.setPokemonDetails,
+        payload: null,
+      });
+    };
+  }, []);
+
   // Save the pokemon in the details page pokemon list
   useEffect(() => {
     if (!!response) {

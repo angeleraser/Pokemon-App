@@ -13,7 +13,6 @@ const PCScreen = () => {
     dispatch,
   } = useContext(PokemonContext);
   const [getPokemonList] = usePokemon();
-
   const catchedPokemonURL = localStorage.getItem("catchedPokemon")
     ? JSON.parse(localStorage.getItem("catchedPokemon")).map(
         ({ name }) => `https://pokeapi.co/api/v2/pokemon/${name}`
@@ -26,12 +25,6 @@ const PCScreen = () => {
   useEffect(() => {
     if (!pc.pokemonList.length && catchedPokemonURL.length > 0) {
       fetchPokemonList();
-    }
-    if (!!!catchedPokemonURL.length) {
-      dispatch({
-        type: types.updatePokemonSavedInPC,
-        payload: JSON.parse(localStorage.getItem("catchedPokemon")) || [],
-      });
     }
   }, []);
 

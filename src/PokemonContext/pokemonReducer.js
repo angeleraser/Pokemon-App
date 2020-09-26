@@ -25,7 +25,7 @@ export const initialState = {
     currentPokemon: null,
   },
   pc: {
-    pokemonList: [],
+    pokemonList: JSON.parse(localStorage.getItem("catchedPokemon")) || [],
   },
 };
 export const pokemonReducer = (state, action) => {

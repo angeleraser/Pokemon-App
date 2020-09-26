@@ -8,6 +8,7 @@ import { delay } from "../../functions/delay";
 import { pokemonIsCatched } from "../../functions/pokemonIsCatched";
 import { PokemonContext } from "../../PokemonContext/PokemonContext";
 import { types } from "../../types/types";
+import { PokemonSprite } from "../Home/PokemonCard/PokemonSprite";
 import { pokemonAnimations } from "./animations";
 
 export const Pokemon = ({ pokemon, arenaContext }) => {
@@ -83,16 +84,7 @@ export const Pokemon = ({ pokemon, arenaContext }) => {
 
   return (
     <div style={{ ...animation }} className="pokemon-body absolute">
-      <img
-        alt="pokemon"
-        src={
-          pokemon.dreamWorld ||
-          pokemon.officialArtwork ||
-          pokemon.front_default ||
-          pokemon.icons.front_default ||
-          pokemon.imageURL?.sprites.front_default
-        }
-      />
+      <PokemonSprite pokemon={pokemon} />
       <audio
         id="pokeball-success-sound"
         ref={pokeballSuccessSound}

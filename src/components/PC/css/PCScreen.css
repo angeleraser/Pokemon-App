@@ -4,6 +4,10 @@
   background-color: var(--primary-blue);
 }
 
+.pc-screen .pokemon-item {
+  cursor: pointer;
+}
+
 .pc-screen .pokemon-wrapper {
   display: grid;
   grid-template-columns: repeat(4, 60px);

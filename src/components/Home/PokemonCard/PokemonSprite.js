@@ -1,7 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from "react";
 import { useFetch } from "../../hooks/useFetch";
-
 export const PokemonSprite = ({ pokemon }) => {
   const [{ data: imageURL }, fetchPokemonImage] = useFetch();
   // Fetch pokemon image if the pokemon.image or pokemon.front_default is null

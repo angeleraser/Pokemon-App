@@ -36,7 +36,7 @@
   margin-left: 12px;
 }
 
-.pokemon-info .game-appareances-wrapper.grid > h2:first-of-type {
+.pokemon-info .game-appareances-wrapper.grid > h1:first-of-type {
   margin-bottom: 0;
   /* grid-column: span 2; */
 }
@@ -106,7 +106,7 @@
   .pokemon-info .game-appareances-wrapper {
     grid-template-columns: repeat(2, 1fr);
   }
-  .pokemon-info .game-appareances-wrapper.grid > h2:first-of-type {
+  .pokemon-info .game-appareances-wrapper.grid > h1:first-of-type {
     grid-column: span 2;
   }
 }
@@ -117,7 +117,7 @@
     row-gap: 18px;
     max-width: 1024px;
   }
-  .pokemon-info .game-appareances-wrapper.grid > h2:first-of-type {
+  .pokemon-info .game-appareances-wrapper.grid > h1:first-of-type {
     grid-column: span 3;
   }
 }
@@ -126,7 +126,7 @@
     grid-template-columns: repeat(4, 1fr);
     column-gap: 30px;
   }
-  .pokemon-info .game-appareances-wrapper.grid > h2:first-of-type {
+  .pokemon-info .game-appareances-wrapper.grid > h1:first-of-type {
     grid-column: span 4;
   }
 }

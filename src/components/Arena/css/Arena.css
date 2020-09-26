@@ -1,6 +1,6 @@
 .arena-wrapper {
   padding-top: 140px;
-  height: 100vh;
+  min-height: 100vh;
   padding: 140px 26px 26px;
   position: relative;
 }

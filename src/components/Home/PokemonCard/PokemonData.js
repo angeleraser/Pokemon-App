@@ -20,7 +20,7 @@ export const PokemonData = ({ pokemon, disableLink }) => {
     : pokemon.isCatched;
   return (
     <div
-      className={`data animate__animated animate__slideInLeft w-full flex flex-col items-center justify-end ${
+      className={`data w-full flex flex-col items-center justify-end ${
         !disableLink ? "pointer" : ""
       }`}>
       {!pokemonIsCurrentlyCatched && !pokemon.isCatched ? (

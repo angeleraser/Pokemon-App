@@ -11,7 +11,7 @@ export const PokemonData = ({ pokemon, disableLink }) => {
   const { push: historyPush } = useHistory();
   const pokemonIsCurrentlyCatched = localStorage.getItem("catchedPokemon")
     ? JSON.parse(localStorage.getItem("catchedPokemon")).some(
-        (name) => name === pokemon.name
+        ({name}) => name === pokemon.name
       )
     : pokemon.isCatched;
   return (

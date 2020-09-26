@@ -57,6 +57,7 @@ export const DetailsScreen = ({
 
   // Reset current pokemon to clean the browser cache
   useEffect(() => {
+    window.scrollTo(0, 0);
     return () => {
       dispatch({
         type: types.setPokemonDetails,

@@ -14,7 +14,6 @@
   max-width: 480px;
   grid-template-columns: 1fr;
   row-gap: 12px;
-  margin-bottom: 30px;
 }
 
 .pokemon-info .game-appareances-wrapper div > span {

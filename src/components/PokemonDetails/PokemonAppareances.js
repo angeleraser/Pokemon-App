@@ -4,7 +4,7 @@ export const PokemonAppareances = ({ data }) => {
   const { game_indices } = data;
   return (
     <div className="w-full game-appareances-wrapper grid">
-      <h2>Game Appareances: </h2>
+      <h1>Game Appareances: </h1>
       {game_indices.map(({ version: { name } }) => (
         <div className='flex' key={name}>
           {" "}

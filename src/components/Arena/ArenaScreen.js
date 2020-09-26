@@ -64,7 +64,7 @@ export const ArenaScreen = () => {
         backgroundImage: `linear-gradient(black, var(--${pokemon.types[0].type.name}))`,
       }}
       className="w-full relative flex arena-wrapper items-center flex-col">
-      <div className="pokemon-place relative flex w-full items-center justify-center">
+      <div className="pokemon-place animate__animated animate__slideInRight relative flex w-full items-center justify-center">
         {" "}
         <div className="circle"></div>
         {pokeballState.success && gotchaSvg}

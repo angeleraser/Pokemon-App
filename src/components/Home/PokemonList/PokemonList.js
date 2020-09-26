@@ -80,7 +80,6 @@ const PokemonList = () => {
   // Update current pokemon list to show
   useEffect(() => {
     dispatch({ type: types.updateCurrentList, payload: loaded });
-
   }, [loaded]);
 
   // Set an error if the pokemon list cannot be fetched :(

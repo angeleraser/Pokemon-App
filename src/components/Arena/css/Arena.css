@@ -70,11 +70,14 @@
   position: absolute;
   top: 120px;
 }
+.arena-wrapper button.attack:active {
+  transform: scale(0.97);
+}
 
 .arena-wrapper .pokemon-hp .bar {
   height: 15px;
   border-radius: 20px;
-  transition: all .4s;
+  transition: all 0.4s;
 }
 
 .arena-wrapper .pokeball.success::before {
@@ -148,7 +151,7 @@
   }
 }
 
-@media screen and (min-width:1024px) {
+@media screen and (min-width: 1024px) {
   .arena-wrapper button.attack {
     top: 160px;
   }
